@@ -1,5 +1,6 @@
-from collections import OrderedDict, defaultdict, ChainMap
-from types import MappingProxyType
+from collections import OrderedDict, defaultdict, ChainMap, namedtuple
+from types import MappingProxyType, SimpleNamespace
+from typing import NamedTuple
 
 
 phonebook = {
@@ -107,3 +108,64 @@ arr_6[2] = 7
 # Bytearrays can be converted back into bytes objects: (This will copy the data)
 arr_6 = bytes(arr_6)
 # print(arr_6)
+
+
+
+
+# Custom class is mutable
+class Car:
+    def __init__(self, color, speed, automatic):
+        self.color = color
+        self.speed = speed
+        self.automatic = automatic
+
+
+car1 = Car("red", 200, True)
+car1.sidemirror = "Broken"
+# print(car1.sidemirror)
+
+
+
+
+# Custom class with dataclass
+from dataclasses import dataclass
+
+@dataclass
+class Bike:
+    color: str
+    speed: float
+    automatic: bool
+
+bike1 = Bike("green", 210.10, True)
+# print(bike1)
+
+
+
+
+# collections.namedtuple: Convenient Data Objects
+Car = namedtuple("Car", "name automatic color")
+car1 = Car("corolla", True, "white")
+# print(car1)     # it is a tuple so it can't be modified after creating an instance
+
+
+
+
+
+# typing.NamedTuple: Improved Namedtuples
+class Bike(NamedTuple):
+    color: str
+    automatic: bool
+    name: str
+
+
+bike_1 = Bike("red", False, "honda")
+# print(bike_1)
+
+
+
+
+
+bike_2 = SimpleNamespace(color="Pink", Engine="70cc", tyre=4)
+bike_2.mileage = 17
+bike_2.color = "green"
+print(bike_2)
