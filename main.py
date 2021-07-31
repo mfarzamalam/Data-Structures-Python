@@ -1,6 +1,8 @@
-from collections import OrderedDict, defaultdict, ChainMap, namedtuple, Counter
+from collections import OrderedDict, defaultdict, ChainMap, namedtuple, Counter, deque
 from types import MappingProxyType, SimpleNamespace
 from typing import NamedTuple
+from queue import LifoQueue
+
 
 
 phonebook = {
@@ -218,4 +220,24 @@ inventory.update(fill_bucket)
 
 
 
+# stack (LIFO)
+# collections.deque: Fast and Robust Stacks
 
+s = deque()
+s.append('eat')
+s.append('sleep')
+s.append('repeat')
+
+
+
+
+
+# queue.LifoQueue: Locking Semantics for Parallel Computing
+d = LifoQueue()
+d.put('eat')
+d.put('sleep')
+d.put('retreat')
+print(d.get())
+print(d.get())
+print(d.get())
+print(d.get_nowait())
