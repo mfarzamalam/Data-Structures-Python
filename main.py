@@ -1,4 +1,4 @@
-from collections import OrderedDict, defaultdict, ChainMap, namedtuple
+from collections import OrderedDict, defaultdict, ChainMap, namedtuple, Counter
 from types import MappingProxyType, SimpleNamespace
 from typing import NamedTuple
 
@@ -168,4 +168,54 @@ bike_1 = Bike("red", False, "honda")
 bike_2 = SimpleNamespace(color="Pink", Engine="70cc", tyre=4)
 bike_2.mileage = 17
 bike_2.color = "green"
-print(bike_2)
+# print(bike_2)
+
+
+
+
+
+# set: Your Go-To Set
+vowels = {'a','e','i','o','u'}
+cubes  = {x: x*x*x for x in range(10)}
+# print(cubes)
+check_vowel = "v" in vowels
+# print(check_vowel)
+random_letter = set("A quick brown fox jumps over")
+match_letter  = random_letter.intersection(vowels)
+# print(match_letter)
+vowels.add("c")
+# print(vowels)
+
+
+
+
+
+
+# frozenset: Immutable Sets, cannot add or delete. only use as a dictionary
+d = {frozenset('a'): "hello"}
+# print(d[frozenset('a')])
+
+
+
+
+
+
+
+# collections.Counter: Multisets
+inventory = Counter()
+bucket = {"apple": 4, "banana":69}
+inventory.update(bucket)
+
+fill_bucket = {"orange":10}
+inventory.update(fill_bucket)
+
+# print(inventory)
+# print(len(inventory))   # calculate all the keys of inventory i.e dictionary
+# print(sum(inventory.values()))      # call all the values of inventory i.e dictionary
+
+
+
+
+
+
+
