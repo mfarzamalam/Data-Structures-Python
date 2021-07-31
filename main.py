@@ -1,7 +1,7 @@
 from collections import OrderedDict, defaultdict, ChainMap, namedtuple, Counter, deque
 from types import MappingProxyType, SimpleNamespace
 from typing import NamedTuple
-from queue import LifoQueue
+from queue import LifoQueue, Queue
 
 
 
@@ -233,11 +233,51 @@ s.append('repeat')
 
 
 # queue.LifoQueue: Locking Semantics for Parallel Computing
-d = LifoQueue()
-d.put('eat')
-d.put('sleep')
-d.put('retreat')
-print(d.get())
-print(d.get())
-print(d.get())
-print(d.get_nowait())
+s = LifoQueue()
+s.put('eat')
+s.put('sleep')
+s.put('retreat')
+# print(d.get())
+# print(d.get())
+# print(d.get())
+# print(d.get_nowait())
+
+
+
+
+
+# list: Terribly Sloooow Queues
+q = []
+q.append('eat')
+q.append('sleep')
+q.append('repeat')
+q.pop(0)
+# print(q)
+
+
+
+
+
+# collections.deque: Fast and Robust Queues
+q = deque()
+q.append('e')
+q.append('a')
+q.append('t')
+
+q.popleft()
+q.popleft()
+# print(q)
+
+
+
+
+
+# queue.Queue: Locking Semantics for Parallel Computing
+q = Queue()
+q.put('eat')
+q.put('sleep')
+q.put('retreat')
+print(q.get())
+print(q.get())
+print(q.get())
+print(q.get_nowait())
